@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼 태그 예제</title>
+</head>
+<body>
+<H2>폼 태그 예제</H2>
+<form action="/Input.do" method="post">
+아이디 : <input type=text name=id value="아이디를 입력하세요." ><br><!-- readonly : 값을 못 바꾸도록 지정해둘수 있음 -->
+비밀번호 : <input type=password name=pw><br>
+생년월일 : <Input type=date name=birth><br> 
+취미 : <input type=checkbox name=hobby value=1>독서
+<input type=checkbox name=hobby value=2>TV시청
+<input type=checkbox name=hobby value=3>게임
+<input type=checkbox name=hobby value=4>산책
+<br>
+성별 : <input type=radio name=gender value=1>남
+<input type=radio name=gender value=2>여
+<br>
+<input type=file name=file><br>
+이메일 : <input type=email name=email><br>
+연락처 : <input type=tel name=tel pattern=""><br>
+<input type=submit value=저장>
+<input type=reset value=취소>
+</form>
+</body>
+</html>
