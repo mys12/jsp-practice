@@ -1,9 +1,8 @@
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,45 +10,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class DataServlet
  */
-@WebServlet("/Loginex.do")
-public class LoginExServlet extends HttpServlet {
+@WebServlet("/Data.do")
+public class DataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public LoginExServlet() {
-		super();
-	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+	HashMap<String,String> map = new HashMap<>();
+	
+    public DataServlet() {
+        super();
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+	
+		request.setAttribute("map", map);
+		request.getRequestDispatcher("/DataList.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-
-		String message = null;
-		if(id.equals("mys") && pw.equals("0000")) {
-			message = "mys님 안녕하세요";
-		} else {
-			message = "로그인에 실패하셨습니다.";
-		}
-		request.setAttribute("message", message);
-//		RequestDispatcher disp = request.getRequestDispatcher("/Loginex.jsp");
-//		disp.forward(request, response);
-		response.sendRedirect("/Loginex.jsp");
-		
+		request.setCharacterEncoding("UTF-8");
+		String name = request.getParameter("name");
+		String tel = request.getParameter("tel");
+		map.put(name, tel);
+		response.sendRedirect("/Data.do");
 	}
 
 }

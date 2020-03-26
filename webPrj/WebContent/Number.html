@@ -5,16 +5,19 @@
 <title>number</title>
 </head>
 <body>
-<h2>HOMEWORK</h2>
-<form action="/Number.do" method="post">
-입력하신 숫자까지의 소수를 구합니다<br>
-숫자를 입력하세요<br>
-숫자 입력 : <input type=text name=a><br>
+<form action="/Number.do" method=post>
+<h4>입력하신 숫자까지의 소수를 구합니다</h4>
+<h4>숫자를 입력하세요</h4><br>
+숫자 입력 : <input type=text name=number><br>
+<input type=hidden name=action value=prime>
 <input type=submit value=입력><br>
+</form>
 <br>
-해당 숫자가 홀수인지 짝수인지 가려줍니다.<br>
-숫자를 입력하세요<br>
-숫자 입력 : <input type=text name=b><br>
+<form action="/Number.do" method=post>
+<h4>해당 숫자가 홀수인지 짝수인지 가려줍니다.</h4>
+<h4>숫자를 입력하세요</h4><br>
+숫자 입력 : <input type=text name=number><br>
+<input type=hidden name=action value=oddEven>
 <input type=submit value=입력><br>
 </form>
 </body>
