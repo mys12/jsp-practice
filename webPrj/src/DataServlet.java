@@ -29,9 +29,20 @@ public class DataServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		request.setAttribute("map", map);
-		request.getRequestDispatcher("/DataList.jsp").forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String action = request.getParameter("action");
+		String url= "";
+		if("list".equals(action)) {
+			
+			request.setAttribute("map", map);
+			url= "/DataList.jsp";
+			
+		}else if("search".equals(action)) {
+			String name = request.getParameter("name");
+			request.setAttribute("tel", map.get(name));
+			url= "/DataView.jsp";
+		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	/**
@@ -42,7 +53,7 @@ public class DataServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String tel = request.getParameter("tel");
 		map.put(name, tel);
-		response.sendRedirect("/Data.do");
+		response.sendRedirect("/Data.do?action=list");
 	}
 
 }
