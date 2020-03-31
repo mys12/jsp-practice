@@ -14,8 +14,11 @@
 <br><br>
 3. <a href="/DataSearch.jsp"><input type=button value=정보검색></a>
 <br><br>
-<a href="/Login.do"><input type=button value=로그아웃></a>
-
+<a href="/Login.do"><input type=button value=로그아웃></a> <br><br>
+<%Cookie[] cookies = request.getCookies(); %>
+<%for(Cookie c : cookies) {%>
+쿠키이름 : <%=c.getName() %>, 쿠키 값 : <%=c.getValue() %>, 쿠키 유지 시간 : <%=c.getMaxAge() %><br>
+<%} %>
 <% } else { response.sendRedirect("/Login.jsp"); }%>
 
 

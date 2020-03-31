@@ -41,6 +41,8 @@ public class DataServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			request.setAttribute("tel", map.get(name));
 			url= "/DataView.jsp";
+		} else {
+			throw new RuntimeException("action 파라미터 값 확인");
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}

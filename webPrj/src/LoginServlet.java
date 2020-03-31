@@ -3,6 +3,7 @@
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,6 +45,11 @@ public class LoginServlet extends HttpServlet {
 		if(id.equals("mys") && pw.equals("0000")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userid", id);
+//			session.setMaxInactiveInterval(3600);
+			Cookie c1 = new Cookie("id", id);
+			Cookie c2 = new Cookie("pw", pw);
+//			c1.setMaxAge(1);
+			response.addCookie(c1); response.addCookie(c2);
 			response.sendRedirect("/DataIndex.jsp");
 			return;
 		}else {
